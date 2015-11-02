@@ -207,6 +207,11 @@ module.exports = function(grunt) {
         "\t\tdefine(factory);\n" +
       "\t} else if (typeof exports === 'object') {\n" +
         "\t\tmodule.exports = factory();\n" +
+      "\t} else if (!!angular) {\n" +
+        "\t\tangular.module('photoswipe', []);\n" +
+        "\t\tangular.module('photoswipe').provider('$photoswipe', function() {" + 
+          "this.$get = function() { return factory(); };" +
+        "});\n" +
       "\t} else {\n" +
         "\t\troot.PhotoSwipe = factory();\n" +
       "\t}\n" +

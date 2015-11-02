@@ -1,4 +1,4 @@
-/*! PhotoSwipe - v4.1.0 - 2015-09-24
+/*! PhotoSwipe - v4.1.0 - 2015-11-02
 * http://photoswipe.com
 * Copyright (c) 2015 Dmitry Semenov; */
 (function (root, factory) { 
@@ -6,6 +6,9 @@
 		define(factory);
 	} else if (typeof exports === 'object') {
 		module.exports = factory();
+	} else if (!!angular) {
+		angular.module('photoswipe', []);
+		angular.module('photoswipe').provider('$photoswipe', function() {this.$get = function() { return factory(); };});
 	} else {
 		root.PhotoSwipe = factory();
 	}
